@@ -41,3 +41,19 @@ Console.WriteLine(t.Item1);
 #!markdown
 
 Above the l value is assigned to the la value, so the l value is a copy of the la value but not a reference to it. So if you change the l value, it doesn't change the la value.
+
+#!markdown
+
+# Tuple
+The tuples feature provides concise syntax to group multiple data elements in a lightweight data structure. You cannot define methods in a tuple type, but you can define methods that operate on tuples.
+For example:
+
+#!csharp
+
+(double, int) myTuple = (4.5, 3);
+Console.WriteLine(myTuple.Item1);
+Console.WriteLine(myTuple.Item2);
+
+// Tuple with named elements
+(double v1, int v2) myTuple3 = (v1: 1.1, v2: 2);
+Console.WriteLine(myTuple3.v1);
