@@ -1,0 +1,43 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":null,"items":[{"name":"csharp","languageName":"C#","aliases":["c#","cs"]},{"name":"fsharp","languageName":"F#","aliases":["f#","fs"]},{"name":"pwsh","languageName":"PowerShell","aliases":["powershell"]},{"name":"javascript","languageName":"JavaScript","aliases":["js"]},{"name":"html","languageName":"HTML"},{"name":"sql","languageName":"SQL"},{"name":"kql","languageName":"KQL"},{"name":"mermaid","languageName":"Mermaid"},{"name":"httpRequest","languageName":"http"},{"name":"value"}]}}
+
+#!markdown
+
+Learning some c# stuff
+
+#!markdown
+
+Structs
+
+#!csharp
+
+struct Location
+{
+    public int x, y;
+
+    public Location(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+    }
+}
+
+#!markdown
+
+This is a struct, it's a value type, so it's stored on the stack. It's a bit like a class, but it's a bit more lightweight. Its properties are copied when you pass it around, so it's a bit like a primitive type.
+
+#!csharp
+
+Location l = new Location(20, 20);
+Location la = l;
+Console.WriteLine(la.y);
+l.y = 9;
+Console.WriteLine(la.y);
+Console.WriteLine(l.y);
+(double, double) t = (1.0, 2.0);
+Console.WriteLine(t.Item1);
+
+#!markdown
+
+Above the l value is assigned to the la value, so the l value is a copy of the la value but not a reference to it. So if you change the l value, it doesn't change the la value.
