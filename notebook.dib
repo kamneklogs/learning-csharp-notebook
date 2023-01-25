@@ -4,11 +4,11 @@
 
 #!markdown
 
-Learning some c# stuff
+# Learning some c# stuff
 
 #!markdown
 
-Structs
+## Structs
 
 #!csharp
 
@@ -44,7 +44,7 @@ Above the l value is assigned to the la value, so the l value is a copy of the l
 
 #!markdown
 
-# Tuple
+## Tuple
 The tuples feature provides concise syntax to group multiple data elements in a lightweight data structure. You cannot define methods in a tuple type, but you can define methods that operate on tuples.
 For example:
 
@@ -57,3 +57,37 @@ Console.WriteLine(myTuple.Item2);
 // Tuple with named elements
 (double v1, int v2) myTuple3 = (v1: 1.1, v2: 2);
 Console.WriteLine(myTuple3.v1);
+
+#!markdown
+
+## The delegate type
+A delegate is a type that represents references to methods with a particular parameter list and return type. When you instantiate a delegate, you can associate its instance with any method with a compatible signature and return type. You can invoke (or call) the method through the delegate instance. Delegates are used to pass methods as arguments to other methods. The .NET Framework class library contains many predefined delegates, such as the EventHandler delegate (used to handle events) and the Predicate delegate (used with the Array.Find method). This will be useful more with events.
+
+#!csharp
+
+public delegate int PerformCalculation(int x, int y);
+
+#!markdown
+
+Any method that matches the signature of the delegate can be assigned to the delegate.
+
+#!csharp
+
+// Create a method for a delegate.
+public static int DelegateMethod(int a, int b)
+{
+    return a + b;
+}
+
+// Instantiate the delegate.
+PerformCalculation calc = DelegateMethod;
+
+// Call the delegate.
+Console.WriteLine(calc(3, 4));
+
+// Passing a delegate as a parameter.
+public static void MethodWithCallback(int param1, int param2, PerformCalculation callback)
+{
+    int value = callback(param1 , param2);
+    Console.WriteLine(value);
+}
