@@ -91,3 +91,105 @@ public static void MethodWithCallback(int param1, int param2, PerformCalculation
     int value = callback(param1 , param2);
     Console.WriteLine(value);
 }
+
+#!markdown
+
+For more information about delegates, see https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/delegates/using-delegates
+
+#!markdown
+
+## Nulleable types
+A nullable type is a value type that can also be assigned the value null. You use the nullable type syntax to declare a nullable type. For example:
+```c#
+double? pi = 3.14;
+char? letter = 'a';
+
+int m2 = 10;
+int? m = m2;
+
+bool? flag = null;
+
+// An array of a nullable value type:
+int?[] arr = new int?[10];
+```
+We can verify if a nullable type has a value by using the is operator:
+```c#
+if (m is int)
+{
+    Console.WriteLine("m is an integer");
+}
+```
+or
+```c#
+if (m is int valueOfM)
+{
+    Console.WriteLine($"m is {valueOfM}");
+}
+else
+{
+    Console.WriteLine("m does not have a value");
+}
+```
+Other way to validate this is by using the HasValue property:
+```c#
+if (m.HasValue)
+{
+    Console.WriteLine($"m is {m.Value}");
+}
+else
+{
+    Console.WriteLine("m does not have a value");
+}
+```
+
+For more information about nullable types, see https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/nullable-value-types
+
+#!markdown
+
+## LINQ
+LINQ stands for Language Integrated Query. It is a set of features that extend the C# language to query data from objects that implement the IEnumerable or IQueryable interface. LINQ provides a consistent query experience for objects in memory as well as for data that is stored in a relational database. LINQ is pronounced "link".
+
+#!csharp
+
+// Create a person class
+public class Person
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+}
+
+#!csharp
+
+// Create a list of Person objects.
+List<Person> people = new List<Person>()
+{
+    new Person { Name = "Homer", Age = 47 },
+    new Person { Name = "Marge", Age = 45 },
+    new Person { Name = "Lisa", Age = 9 },
+    new Person { Name = "Bart", Age = 8 },
+    new Person { Name = "Maggie", Age = 2 }
+};
+
+// Create a query that selects the names of all people.
+IEnumerable<string> query = from person in people
+                            select person.Name;
+
+// Execute the query.
+foreach (string name in query)
+    Console.WriteLine(name);
+
+#!csharp
+
+// Query for people older than 40.
+IEnumerable<Person> query2 = from person in people
+                             where person.Age > 40
+                             select person;
+
+// Execute the query.
+foreach (Person p in query2)
+    Console.WriteLine(p.Name);
+
+#!markdown
+
+I think this lectures would be useful:
+- Is Using LINQ in C# Bad for Performance? : https://medium.com/swlh/is-using-linq-in-c-bad-for-performance-318a1e71a732
